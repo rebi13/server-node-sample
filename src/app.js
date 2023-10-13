@@ -1,4 +1,5 @@
 import express from 'express';
+import cors from 'cors';
 import { connectMongoDB, disconnectMongoDB } from './loader/index.js';
 import { port } from './config/index.js';
 import AppError from './misc/AppError.js';
