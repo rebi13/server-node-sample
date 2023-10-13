@@ -5,11 +5,18 @@ import AppError from './misc/AppError.js';
 import commonErrors from './misc/commonErrors.js';
 import { v1 } from './routers/index.js';
 
+const corsOptions = {
+  origin: 'http://localhost:3000',
+  optionsSuccessStatus: 200,
+  credentials: true
+};
+
 // MongoDB에 연결
 await connectMongoDB();
 console.log('express application을 초기화합니다.');
 
 const app = express();
+app.use(cors(corsOptions));
 app.use(express.json());
 
 // Health check API
