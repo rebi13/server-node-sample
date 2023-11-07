@@ -1,23 +1,23 @@
-import { BoardDAO } from '../db/index.js';
+import { BoardModel } from '../db/models/index.js';
 
 class BoardService {
   constructor() {
-    this.boardDAO = new BoardDAO();
+    this.boardModel = new BoardModel();
   }
-  async getBoard(id) {
-    return await this.boardDAO.findById(id);
+  getBoard(id) {
+    return this.boardModel.findById(id);
   }
-  async getBoards() {
-    return await this.boardDAO.findBoards();
+  getBoards() {
+    return this.boardModel.findBoards();
   }
-  async addBoard(board) {
-    return await this.boardDAO.create(board);
+  addBoard(board) {
+    return this.boardModel.create(board);
   }
-  async updateBoard(id, board) {
-    return await this.boardDAO.update(id, board);
+  updateBoard(id, board) {
+    return this.boardModel.update(id, board);
   }
-  async deleteBoard(id) {
-    return await this.boardDAO.delete(id);
+  deleteBoard(id) {
+    return this.boardModel.delete(id);
   }
 }
 export default BoardService;

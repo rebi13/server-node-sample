@@ -10,8 +10,7 @@ boardRouter.get(
   '/:id',
   asyncHandler(async (req, res, next) => {
     const { id } = req.params;
-    const result = await boardService.getBoard(id);
-    return result;
+    return await boardService.getBoard(id);
   })
 );
 
@@ -19,8 +18,7 @@ boardRouter.get(
 boardRouter.get(
   '/',
   asyncHandler(async (req, res, next) => {
-    const result = await boardService.getBoards(); // 새로운 메서드 추가
-    return result;
+    return await boardService.getBoards();
   })
 );
 
@@ -29,11 +27,10 @@ boardRouter.post(
   '/',
   asyncHandler(async (req, res, next) => {
     const { title, content } = req.body;
-    const result = await boardService.addBoard({
+    return await boardService.addBoard({
       title,
       content
     });
-    return result;
   })
 );
 
@@ -43,11 +40,10 @@ boardRouter.patch(
   asyncHandler(async (req, res, next) => {
     const { id } = req.params;
     const { title, content } = req.body;
-    const result = await boardService.updateBoard(id, {
+    return await boardService.updateBoard(id, {
       title,
       content
     });
-    return result;
   })
 );
 
@@ -56,8 +52,7 @@ boardRouter.delete(
   '/:id',
   asyncHandler(async (req, res, next) => {
     const { id } = req.params;
-    const result = await boardService.deleteBoard(id);
-    return result;
+    return await boardService.deleteBoard(id);
   })
 );
 
